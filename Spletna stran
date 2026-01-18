@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zavetišče za pande</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      padding-top: 70px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+    
+    .container {
+      flex: 1 0 auto;
+    }
+
+    .navbar {
+      background-color: #ffffff !important;
+    }
+    
+    .navbar .nav-link,
+    .navbar-toggler {
+      color: #000000 !important;
+      padding: 0.75rem 1.25rem;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      background-color: black;
+      color: white !important;
+      border-radius: 4px;
+    }
+    
+    .navbar-toggler {
+      border-color: #000000;
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    
+    .navbar-nav {
+      width: 100%;
+      justify-content: space-around;
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+    }
+    
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .content-box {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 40px 30px;
+      border-radius: 15px;
+      margin-top: 40px;
+    }
+
+    .section-preview {
+      background-color: rgba(0, 0, 0, 0.75);
+      border-radius: 15px;
+      margin: 40px 0;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .section-preview:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .section-img img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    
+    .section-img img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .cta-button {
+      font-size: 1.2rem;
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-top: 1px solid white;
+    }
+    
+    footer.footer-custom {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .section-preview {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="navbar-left">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#pandaNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="../index.html">
+      <img src="Slike/logo.svg" alt="Logo">
+    </a>
+  </div>
+  <div class="collapse navbar-collapse" id="pandaNavbar">
+    <ul class="navbar-nav mx-auto text-center">
+      <li class="nav-item"><a class="nav-link" href="index.html">Domov</a></li>
+      <li class="nav-item"><a class="nav-link" href="Podstrani/novice.html">Novice</a></li>
+      <li class="nav-item"><a class="nav-link" href="Podstrani/onas.html">O nas</a></li>
+      <li class="nav-item"><a class="nav-link" href="Podstrani/pande.html">Pande</a></li>
+      <li class="nav-item"><a class="nav-link" href="Podstrani/posvojipando.html">Posvoji pando</a></li>
+      <li class="nav-item"><a class="nav-link" href="Podstrani/trgovina.html">Trgovina</a></li>
+      <li class="nav-item"><a class="nav-link" href="Podstrani/kontakt.html">Kontakt</a></li>
+      <li class="nav-item"><a class="nav-link" href="Podstrani/viri.html">Viri</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container text-white">
+  <div class="content-box text-center" data-aos="fade-up">
+    <h1 class="display-4">Dobrodošli v zavetišču za pande 🐼</h1>
+    <p class="lead mt-3">Naše zavetišče je dom za pande, kjer jim nudimo ljubezen, oskrbo in zaščito.</p>
+<div class="ratio ratio-16x9 mt-4">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/3ndBCO-afFA"
+    title="Panda video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+    <a href="Podstrani/pande.html" class="btn cta-button mt-4">Spoznaj naše pande</a>
+  </div>
+
+  <div class="row section-preview align-items-center" data-aos="fade-up">
+    <div class="col-md-6 section-img">
+      <img src="Slike/novice0.png" alt="Novice">
+    </div>
+    <div class="col-md-6 section-text">
+      <h2>Novice</h2>
+      <p>Preberite najnovejše novice o naših pandah, dogodkih in oskrbi.</p>
+      <a href="Podstrani/novice.html" class="btn cta-button">Preberi novice</a>
+    </div>
+  </div>
+
+  <div class="row section-preview align-items-center" data-aos="fade-up">
+    <div class="col-md-6 order-md-2 section-img">
+      <img src="Slike/onas2.png" alt="O nas">
+    </div>
+    <div class="col-md-6 order-md-1 section-text">
+      <h2>O nas</h2>
+      <p>Spoznajte našo predano ekipo in poslanstvo zavetišča.</p>
+      <a href="Podstrani/onas.html" class="btn cta-button">Več o nas</a>
+    </div>
+  </div>
+
+  <div class="row section-preview align-items-center" data-aos="fade-up">
+    <div class="col-md-6 section-img">
+      <img src="Slike/lingling.jpg" alt="Pande">
+    </div>
+    <div class="col-md-6 section-text">
+      <h2>Naše pande</h2>
+      <p>Pozdravite kosmate prebivalce našega zavetišča!</p>
+      <a href="Podstrani/pande.html" class="btn cta-button">Poglej pande</a>
+    </div>
+  </div>
+
+  <div class="row section-preview align-items-center" data-aos="fade-up">
+    <div class="col-md-6 order-md-2 section-img">
+      <img src="Slike/posvojipando.jpg" alt="Posvoji pando">
+    </div>
+    <div class="col-md-6 order-md-1 section-text">
+      <h2>Posvoji pando</h2>
+      <p>Pomagajte s simbolično posvojitvijo in podprite pande.</p>
+      <a href="Podstrani/posvojipando.html" class="btn cta-button">Posvoji zdaj</a>
+    </div>
+  </div>
+
+  <div class="row section-preview align-items-center" data-aos="fade-up">
+    <div class="col-md-6 section-img">
+      <img src="Slike/trgovina.jpg" alt="Trgovina">
+    </div>
+    <div class="col-md-6 section-text">
+      <h2>Trgovina</h2>
+      <p>Kupite prikupne izdelke in s tem podprite naše zavetišče.</p>
+      <a href="Podstrani/trgovina.html" class="btn cta-button">Poglej ponudbo</a>
+    </div>
+  </div>
+
+  <div class="row section-preview align-items-center" data-aos="fade-up">
+    <div class="col-md-6 order-md-2 section-img">
+      <img src="Slike/kontakt.jpg" alt="Kontakt">
+    </div>
+    <div class="col-md-6 order-md-1 section-text">
+      <h2>Kontakt</h2>
+      <p>Za vse informacije stopite v stik z nami za vprašanja ali sodelovanja.</p>
+      <a href="Podstrani/kontakt.html" class="btn cta-button">Kontaktiraj nas</a>
+    </div>
+  </div>
+</div>
+
+<footer class="text-center text-white mt-5 p-4">
+  <p>&copy; 2025 Zavetišče za pande. Vse pravice pridržane.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+</script>
+</body>
+</html>
