@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    body {
+      padding-top: 70px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+    
+    .container {
+      flex: 1 0 auto;
+    }
+
+    .navbar {
+      background-color: #ffffff !important;
+    }
+
+    .navbar .nav-link,
+    .navbar-toggler {
+      color: #000000 !important;
+      padding: 0.75rem 1.25rem;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      background-color: black;
+      color: white !important;
+      border-radius: 4px;
+    }
+
+    .navbar-toggler {
+      border-color: #000000;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .navbar-nav {
+      width: 100%;
+      justify-content: space-around;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-left .navbar-toggler {
+      margin-right: 0.5rem;
+    }
+
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    iframe {
+      border-radius: 10px;
+    }
+
+    .info-section {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-top: 1px solid white;
+    }
+    
+    footer.footer-custom {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="navbar-left">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#pandaNavbar" aria-controls="pandaNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="../index.html">
+      <img src="../Slike/logo.svg" alt="Logo">
+    </a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="pandaNavbar">
+    <ul class="navbar-nav mx-auto text-center">
+      <li class="nav-item"><a class="nav-link" href="../index.html">Domov</a></li>
+      <li class="nav-item"><a class="nav-link" href="novice.html">Novice</a></li>
+      <li class="nav-item"><a class="nav-link" href="onas.html">O nas</a></li>
+      <li class="nav-item"><a class="nav-link" href="pande.html">Pande</a></li>
+      <li class="nav-item"><a class="nav-link" href="posvojipando.html">Posvoji pando</a></li>
+      <li class="nav-item"><a class="nav-link" href="trgovina.html">Trgovina</a></li>
+      <li class="nav-item"><a class="nav-link active" href="kontakt.html">Kontakt</a></li>
+      <li class="nav-item"><a class="nav-link" href="viri.html">Viri</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="form-container">
+    <h2 class="text-center mb-4">Pišite nam</h2>
+    <form>
+      <div class="mb-3">
+        <label for="name" class="form-label">Ime in priimek</label>
+        <input type="text" class="form-control" id="name" placeholder="Vaše ime" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Elektronski naslov</label>
+        <input type="email" class="form-control" id="email" placeholder="vas@email.com" required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Sporočilo</label>
+        <textarea class="form-control" id="message" rows="5" placeholder="Vaše sporočilo ..." required></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-light">Pošlji</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="info-section">
+    <h4>Odpiralni čas</h4>
+    <p>Odprto vsak dan od 8:00 do 18:00</p>
+
+    <h4>Pokličite nas</h4>
+    <p>86-28-83510033</p>
+
+    <h4>Naš naslov</h4>
+    <p>1375 Panda Avenue, Chenghua District, Chengdu City, Sichuan Province, China</p>
+
+    <div class="mt-4">
+      <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3345.743306115116!2d104.1430634!3d30.7362394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36efc4a5b3d1b71f%3A0x222bcf51cbce3389!2sChengdu%20Research%20Base%20of%20Giant%20Panda%20Breeding!5e0!3m2!1sen!2ssi!4v1716819928876!5m2!1sen!2ssi"
+      width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade" title="Naslov">  
+      </iframe>
+    </div>
+  </div>
+</div>
+<footer class="text-center text-white mt-5 p-4">
+  <p>&copy; 2025 Zavetišče za pande. Vse pravice pridržane.</p>
+</footer>
+</body>
+</html>

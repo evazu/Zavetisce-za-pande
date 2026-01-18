@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Novice</title>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      padding-top: 70px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    .container {
+      flex: 1 0 auto;
+    }
+
+    .navbar {
+      background-color: #ffffff !important;
+    }
+
+    .navbar .nav-link,
+    .navbar-toggler {
+      color: #000000 !important;
+      padding: 0.75rem 1.25rem;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      background-color: black;
+      color: white !important;
+      border-radius: 4px;
+    }
+
+    .navbar-toggler {
+      border-color: #000000;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .navbar-nav {
+      width: 100%;
+      justify-content: space-around;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-left .navbar-toggler {
+      margin-right: 0.5rem;
+    }
+
+    .title-container {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      max-width: 300px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .news-card {
+      background-color: rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 10px;
+      overflow: hidden;
+      color: white;
+    }
+
+    .news-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .news-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .news-card .card-text {
+      max-height: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-top: 1px solid white;
+      flex-shrink: 0;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="navbar-left">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#pandaNavbar"
+        aria-controls="pandaNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">
+        <img src="../Slike/logo.svg" alt="Logo">
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="pandaNavbar">
+      <ul class="navbar-nav mx-auto text-center">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Domov</a></li>
+        <li class="nav-item"><a class="nav-link active" href="novice.html">Novice</a></li>
+        <li class="nav-item"><a class="nav-link" href="onas.html">O nas</a></li>
+        <li class="nav-item"><a class="nav-link" href="pande.html">Pande</a></li>
+        <li class="nav-item"><a class="nav-link" href="posvojipando.html">Posvoji pando</a></li>
+        <li class="nav-item"><a class="nav-link" href="trgovina.html">Trgovina</a></li>
+        <li class="nav-item"><a class="nav-link" href="kontakt.html">Kontakt</a></li>
+        <li class="nav-item"><a class="nav-link" href="viri.html">Viri</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="title-container">
+      <h2 class="mb-0">Novice</h2>
+    </div>
+
+    <div class="row" id="initial-news">
+      <div class="col-md-4 mb-4">
+        <div class="card news-card h-100">
+          <img
+            src="../Slike/novice1.png"
+            class="card-img-top"
+            alt="Mladiči pande"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Predstavitev novih mladičev</h5>
+            <p class="card-text flex-grow-1">
+              Ob praznovanju dneva državnosti so se novorojeni mladiči pande
+              razreda 2025 iz raziskovalne baze za vzrejo orjaških pand Chengdu
+              javno pojavili...
+            </p>
+            <a
+              href="#"
+              onclick="return false;"
+              class="btn btn-primary mt-2 align-self-start"
+              >Preberi več</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card news-card h-100">
+          <img
+            src="../Slike/novice2.png"
+            class="card-img-top"
+            alt="Veterinarska ambulanta"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Prenova veterinarske ambulante</h5>
+            <p class="card-text flex-grow-1">
+              Leta 2006 zgrajena veterinarska ambulanta v raziskovalni bazi Chengdu
+              za vzrejo orjaških pand je odgovorna za vsakodnevno zdravstveno oskrbo...
+            </p>
+            <a
+              href="#"
+              onclick="return false;"
+              class="btn btn-primary mt-2 align-self-start"
+              >Preberi več</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card news-card h-100">
+          <img
+            src="../Slike/novice3.jpg"
+            class="card-img-top"
+            alt="Oskrbnica Mei Yan"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Intervju z oskrbnico Mei Yan</h5>
+            <p class="card-text flex-grow-1">
+              Gospa Mei je leta 2008 postala skrbnica pand v Panda Base in njeni
+              številni spletni oboževalci so jo poimenovali "Jiangzuo Meimei". Je
+              zelo usposobljena za nego in...
+            </p>
+            <a
+              href="#"
+              onclick="return false;"
+              class="btn btn-primary mt-2 align-self-start"
+              >Preberi več</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-none" id="more-news">
+      <div class="col-md-4 mb-4">
+        <div class="card news-card h-100">
+          <img
+            src="../Slike/novice4.jpg"
+            class="card-img-top"
+            alt="Oskrbnik Deng Tao"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Intervju z oskrbnikom Deng Tao</h5>
+            <p class="card-text flex-grow-1">
+              Leta 2001 se je pridružil bazi pand in postal skrbnik pand.
+              Trenutno je eden od vodij skupine za vzrejo pand. Sodeloval je tudi
+              pri mednarodnih projektih...
+            </p>
+            <a
+              href="#"
+              onclick="return false;"
+              class="btn btn-primary mt-2 align-self-start"
+              >Preberi več</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card news-card h-100">
+          <img
+            src="../Slike/novice5.jpg"
+            class="card-img-top"
+            alt="Oskrbnik Tan Jintao"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Intervju z oskrbnikom Tan Jintao</h5>
+            <p class="card-text flex-grow-1">
+              Gospod Tan že več kot dve desetletji vztrajno dela v bazi za pande in
+              je specializiran za nego mladih pand. S svojo skrbnostjo in bogatimi
+              izkušnjami...
+            </p>
+            <a
+              href="#"
+              onclick="return false;"
+              class="btn btn-primary mt-2 align-self-start"
+              >Preberi več</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card news-card h-100">
+          <img
+            src="../Slike/novice6.jpg"
+            class="card-img-top"
+            alt="Oskrbnica Abe Noboku"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Intervju z oskrbnico Abe Noboku</h5>
+            <p class="card-text flex-grow-1">
+              Gospa Abe se je že v otroštvu navdušila nad pandami, se naučila
+              kitajsko in prišla na Kitajsko študirat zoologijo. Po diplomi leta
+              2010 je pridobila izkušnje...
+            </p>
+            <a
+              href="#"
+              onclick="return false;"
+              class="btn btn-primary mt-2 align-self-start"
+              >Preberi več</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-light btn-lg" id="show-more-btn">
+        Prikaži več novic
+      </button>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#show-more-btn').on('click', function () {
+        $('#more-news').removeClass('d-none');
+        $(this).hide();
+      });
+    });
+  </script>
+
+  <footer class="text-center text-white mt-5 p-4">
+    <p>&copy; 2025 Zavetišče za pande. Vse pravice pridržane.</p>
+  </footer>
+</body>
+</html>

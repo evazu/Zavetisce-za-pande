@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trgovina</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    body {
+      padding-top: 70px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+    
+    .container {
+      flex: 1 0 auto;
+    }
+    
+    .title-bg {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 0.3em 0.8em;
+    border-radius: 6px;
+    color: white;
+    text-shadow: none;
+    } 
+
+    .navbar {
+      background-color: #ffffff !important;
+    }
+
+    .navbar .nav-link,
+    .navbar-toggler {
+      color: #000000 !important;
+      padding: 0.75rem 1.25rem;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      background-color: black;
+      color: white !important;
+      border-radius: 4px;
+    }
+
+    .navbar-toggler {
+      border-color: #000000;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .navbar-nav {
+      width: 100%;
+      justify-content: space-around;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-left .navbar-toggler {
+      margin-right: 0.5rem;
+    }
+
+    .product-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      padding: 10px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .product-card img {
+      border-radius: 8px;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      margin-bottom: 10px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-title {
+      font-weight: bold;
+      margin-top: 0;
+      color: black;
+      text-shadow: none;
+      font-size: 1.2rem;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 4px;
+    }
+
+    #product-overlay {
+      display: none;
+      position: fixed;
+      z-index: 1050;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      color: black;
+    }
+
+    #product-overlay img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #product-overlay .description {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    #product-overlay .btn-add-basket {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto 10px auto;
+      transition: background-color 0.3s ease;
+    }
+
+    #product-overlay .btn-add-basket:hover {
+      background-color: #45a049;
+    }
+
+    #product-overlay .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      color: #888;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+    }
+
+    #product-overlay .close-btn:hover {
+      color: #000;
+    }
+
+    #overlay-background {
+      display: none;
+      position: fixed;
+      z-index: 1040;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-top: 1px solid white;
+    }
+    
+    footer.footer-custom {
+      flex-shrink: 0;
+    }
+    
+    #newsletter-popup {
+      position: fixed;
+      z-index: 2000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #newsletter-popup .popup-content {
+      background-color: white;
+      color: black;
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 700px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+      font-size: 1.25rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    #newsletter-popup .popup-content .close-newsletter {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.8rem;
+      color: #888;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #newsletter-popup .popup-content .close-newsletter:hover {
+      color: black;
+    }
+
+    body.popup-active {
+      overflow: hidden;
+    }
+
+    body.popup-active > *:not(#newsletter-popup) {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="navbar-left">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#pandaNavbar"
+      aria-controls="pandaNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="../index.html">
+      <img src="../Slike/logo.svg" alt="Logo">
+    </a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="pandaNavbar">
+    <ul class="navbar-nav mx-auto text-center">
+      <li class="nav-item"><a class="nav-link" href="../index.html">Domov</a></li>
+      <li class="nav-item"><a class="nav-link" href="novice.html">Novice</a></li>
+      <li class="nav-item"><a class="nav-link" href="onas.html">O nas</a></li>
+      <li class="nav-item"><a class="nav-link" href="pande.html">Pande</a></li>
+      <li class="nav-item"><a class="nav-link" href="posvojipando.html">Posvoji pando</a></li>
+      <li class="nav-item"><a class="nav-link active" href="trgovina.html">Trgovina</a></li>
+      <li class="nav-item"><a class="nav-link" href="kontakt.html">Kontakt</a></li>
+      <li class="nav-item"><a class="nav-link" href="viri.html">Viri</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+ <h2 class="text-center mb-4"><span class="title-bg">Panda izdelki</span></h2>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="product-card" data-title="Plišasta panda" data-price="25,00 €" data-description="Mehka plišasta panda je popolno darilo za vsakega ljubitelja pand." data-img="../Slike/pli%C5%A1astapanda.jpg">
+        <img src="../Slike/pli%C5%A1astapanda.jpg" class="img-fluid" alt="Plišasta panda" />
+        <div class="product-title">Plišasta panda</div>
+        <div class="product-price">25,00 €</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="product-card" data-title="Panda skodelica" data-price="15,00 €" data-description="Skodelica z motivom pande za vaš najljubši napitek." data-img="../Slike/skodelica.jpg">
+        <img src="../Slike/skodelica.jpg" class="img-fluid" alt="Panda skodelica" />
+        <div class="product-title">Panda skodelica</div>
+        <div class="product-price">15,00 €</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="product-card" data-title="Majica s pando" data-price="20,00 €" data-description="Udobna majica z ljubkim potiskom pande." data-img="../Slike/majica.jpg">
+        <img src="../Slike/majica.jpg" class="img-fluid" alt="Majica s pando" />
+        <div class="product-title">Majica s pando</div>
+        <div class="product-price">20,00 €</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="product-card" data-title="Panda nalepke" data-price="5,00 €" data-description="Set nalepk z motivi pande, ki vam bodo polepšali okolico." data-img="../Slike/nalepke.jpg">
+        <img src="../Slike/nalepke.jpg" class="img-fluid" alt="Panda nalepke" />
+        <div class="product-title">Panda nalepke</div>
+        <div class="product-price">5,00 €</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="product-card" data-title="Obesek za ključe" data-price="10,00 €" data-description="Obesek za ključe z motivom pande, ki vas bo spremljal na poti." data-img="../Slike/obesek.jpg">
+        <img src="../Slike/obesek.jpg" class="img-fluid" alt="Obesek za ključe" />
+        <div class="product-title">Obesek za ključe</div>
+        <div class="product-price">10,00 €</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="product-card" data-title="Panda nahrbtnik" data-price="30,00 €" data-description="Praktičen nahrbtnik v obliki pande za vsak dan." data-img="../Slike/nahrbtnik.jpg">
+        <img src="../Slike/nahrbtnik.jpg" class="img-fluid" alt="Panda nahrbtnik" />
+        <div class="product-title">Panda nahrbtnik</div>
+        <div class="product-price">30,00 €</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="product-card" data-title="Panda nogavice" data-price="12,00 €" data-description="Tople in udobne nogavice z motivom pande." data-img="../Slike/nogavice.jpg">
+        <img src="../Slike/nogavice.jpg" class="img-fluid" alt="Panda nogavice" />
+        <div class="product-title">Panda nogavice</div>
+        <div class="product-price">12,00 €</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="product-card" data-title="Panda kapa" data-price="18,00 €" data-description="Kapa s šiltom z ljubkim pandinim motivom." data-img="../Slike/kapa.jpg">
+        <img src="../Slike/kapa.jpg" class="img-fluid" alt="Panda kapa" />
+        <div class="product-title">Panda kapa</div>
+        <div class="product-price">18,00 €</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="overlay-background"></div>
+
+<div id="product-overlay">
+  <div class="close-btn">&times;</div>
+  <img src="" alt="Izdelek" id="overlay-img" />
+  <h3 id="overlay-title"></h3>
+  <p class="description" id="overlay-description"></p>
+  <p class="product-price" id="overlay-price"></p>
+  <button class="btn-add-basket">Dodaj v košarico</button>
+</div>
+
+<footer class="text-center text-white mt-5 p-4">
+  <p>&copy; 2025 Zavetišče za pande. Vse pravice pridržane.</p>
+</footer>
+
+<div id="newsletter-popup" style="display: none;">
+  <div class="popup-content">
+    <span class="close-newsletter">&times;</span>
+    <img src="../Slike/oglas.jpg" alt="Oglas" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;" />
+    <h4>✨🐼Prijavite se na naše e-novice in prejmite 10% popust na vaše prvo naročilo!🐼✨</h4>
+    <button class="btn btn-dark mt-3">Prijavi se na e-novice</button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    let basketCount = 0;
+
+    $('.product-card').on('click', function () {
+      const title = $(this).data('title');
+      const price = $(this).data('price');
+      const description = $(this).data('description');
+      const imgSrc = $(this).data('img');
+
+      $('#overlay-title').text(title);
+      $('#overlay-price').text(price);
+      $('#overlay-description').text(description);
+      $('#overlay-img').attr('src', imgSrc).attr('alt', title);
+
+      $('#overlay-background').fadeIn(200);
+      $('#product-overlay').fadeIn(200);
+    });
+
+    $('.close-btn, #overlay-background').on('click', function () {
+      $('#product-overlay').fadeOut(200);
+      $('#overlay-background').fadeOut(200);
+    });
+
+    $('.btn-add-basket').on('click', function () {
+      basketCount++;
+      $('#basket-count').text(basketCount);
+      $('#product-overlay').fadeOut(200);
+      $('#overlay-background').fadeOut(200);
+    });
+
+    $('#newsletter-popup').fadeIn(300);
+
+    $('.close-newsletter').on('click', function () {
+      $('#newsletter-popup').fadeOut(200);
+    });
+
+    $('#newsletter-popup').on('click', function (e) {
+      if ($(e.target).is('#newsletter-popup')) {
+        $('#newsletter-popup').fadeOut(200);
+      }
+    });
+
+    $('#newsletter-popup .btn').on('click', function () {
+      $('#newsletter-popup').fadeOut(200);
+    });
+  });
+</script>
+</body>
+</html>
